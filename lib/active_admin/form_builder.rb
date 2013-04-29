@@ -21,8 +21,7 @@ module ActiveAdmin
     end
 
     def cancel_link(url = {:action => "index"}, html_options = {}, li_attrs = {})
-      li_attrs[:class] ||= "btn btn-mini cancel"
-      li_content = template.link_to I18n.t('active_admin.cancel'), url, html_options
+      li_content = template.link_to I18n.t('active_admin.cancel'), url, html_options.merge(class: "btn btn-mini cancel")
       form_buffers.last << li_content
     end
 
