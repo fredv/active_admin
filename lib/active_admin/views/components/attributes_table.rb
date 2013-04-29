@@ -21,10 +21,10 @@ module ActiveAdmin
         title   = args[0]
         options = args.extract_options!
         @table << [
-          template.content_tag :dt do
+          template.content_tag(:dt) do
             header_content_for(title)
           end,
-          template.content_tag :dd do
+          template.content_tag(:dd) do
             content_for(block || title)
           end
         ].join("\n").html_safe
