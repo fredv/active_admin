@@ -47,7 +47,13 @@ module ActiveAdmin
       end
 
       def build_action_items
-        insert_tag(view_factory.action_items, @action_items) if @action_items.any?
+        if @action_items.any?
+          div class: 'row-fluid' do
+            div class: 'span8' do
+              insert_tag(view_factory.action_items, @action_items) 
+            end
+          end
+        end
       end
 
     end
