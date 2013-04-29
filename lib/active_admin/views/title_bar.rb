@@ -20,13 +20,13 @@ module ActiveAdmin
         end
         div class: 'row-fluid' do
           div class: 'page-header span8' do
+            build_action_items
             build_title_tag
           end
         end
       end
 
       def build_titlebar_right
-        build_action_items
       end
 
       def build_breadcrumb(separator = "/")
@@ -50,11 +50,7 @@ module ActiveAdmin
 
       def build_action_items
         if @action_items.any?
-          div class: 'row-fluid' do
-            div class: 'span8' do
-              insert_tag(view_factory.action_items, @action_items) 
-            end
-          end
+          insert_tag(view_factory.action_items, @action_items) 
         end
       end
 
