@@ -3,7 +3,7 @@ module ActiveAdmin
     class Header < Component
 
       def build(namespace, menu)
-        super(class: "navbar navbar-fixed-top", id: 'navigation')
+        super(class: "navbar navbar-inverse navbar-fixed-top", id: 'navigation')
 
         @namespace = namespace
         @menu = menu
