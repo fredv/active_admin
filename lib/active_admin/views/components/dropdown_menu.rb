@@ -47,7 +47,6 @@ module ActiveAdmin
 
       def build_button(name, button_options)
         button_options[:class] ||= ""
-        button_options[:class] << " dropdown_menu_button"
         button_options[:class] << " btn"
         button_options[:class] << " dropdown-toggle"
         button_options[:class] = button_options[:class].strip
@@ -60,8 +59,7 @@ module ActiveAdmin
       end
 
       def build_menu(options)
-        options[:class] ||= ""
-        options[:class] << " dropdown-menu"
+        options[:class] = "dropdown-menu"
         options[:class] = options[:class].strip
 
         menu_list = nil
