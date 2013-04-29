@@ -9,25 +9,26 @@ module ActiveAdmin
       def build(record, *attrs)
         @record = record
         super(:for => @record)
-        @table = dl(class: 'dl-horizontal')
-        rows(*attrs)
+        dl(class: 'dl-horizontal') do
+          rows(*attrs).join("\n").html_safe
+        end
       end
 
       def rows(*attrs)
-        attrs.each {|attr| row(attr) }
+        attrs.map {|attr| row(attr) }.flatten
       end
 
       def row(*args, &block)
         title   = args[0]
         options = args.extract_options!
-        @table << [
+        [
           dt do
             header_content_for(title)
           end,
           dd do
             content_for(block || title)
           end
-        ].join("\n").html_safe
+        ]
       end
 
       protected
