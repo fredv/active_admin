@@ -13,15 +13,20 @@ module ActiveAdmin
       private
 
       def build_titlebar_left
-        div class: 'row-fluid' do
-          build_breadcrumb
+        div class: 'span8' do
+         # div class: 'span12' do
+         #   build_breadcrumb
+         # end
 
-          div class: 'page-header span8' do
-            build_action_items
-            build_title_tag
+          div class: 'span12' do
+            div class: 'page-header' do
+              build_action_items
+              build_title_tag
+            end
           end
         end
       end
+
 
       def build_titlebar_right
       end
