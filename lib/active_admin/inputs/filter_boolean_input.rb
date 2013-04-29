@@ -6,7 +6,7 @@ module ActiveAdmin
       def to_html
         input_wrapping do
           [ label_html,
-            template.content_tag :div, class: 'controls' do
+            template.content_tag(:div, class: 'controls') do
               check_box_html
             end
           ].join("\n").html_safe
