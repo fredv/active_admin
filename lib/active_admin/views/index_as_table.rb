@@ -123,7 +123,7 @@ module ActiveAdmin
       end
 
       def table_for(*args, &block)
-        template.content_tag :div, class: 'well' do
+        content_tag :div, class: 'well' do
           insert_tag IndexTableFor, *args, &block
         end
       end
