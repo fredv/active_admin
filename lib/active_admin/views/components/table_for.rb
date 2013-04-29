@@ -67,9 +67,19 @@ module ActiveAdmin
         classes << "sorted-#{current_sort[1]}"        if sort_key && current_sort[0] == sort_key
         classes << col.html_class
 
+        sort_css = if sort_key && current_sort[0] == sort_key
+          if current_sort[1] == 'desc'
+            'icon-sort-down'
+          else
+            'icon-sort-up'
+          end
+        else
+          'icon-sort'
+        end
+
         if sort_key
           th :class => classes do
-            link_to(raw("<nobr>#{col.pretty_title}&nbsp;<i class='icon icon-sort'></i></nobr>"),params.merge(:order => "#{sort_key}_#{order_for_sort_key(sort_key)}").except(:page))
+            link_to(raw("<nobr>#{col.pretty_title}&nbsp;<i class='icon #{sort_css}'></i></nobr>"),params.merge(:order => "#{sort_key}_#{order_for_sort_key(sort_key)}").except(:page))
           end
         else
           th(col.pretty_title, :class => classes)
