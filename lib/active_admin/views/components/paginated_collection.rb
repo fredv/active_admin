@@ -61,11 +61,11 @@ module ActiveAdmin
       protected
 
       def build_pagination_with_formats(options)
-        div class: 'pagination pagination-centered' do
+        div class: 'pagination pagination-centered span12' do
           build_pagination
         end
 
-        div do
+        div class: 'span12' do
           div(page_entries_info(options).html_safe, :class => "pagination_information")
 
           if @download_links.is_a?(Array) && !@download_links.empty?
