@@ -9,7 +9,7 @@ module ActiveAdmin
       def build(record, *attrs)
         @record = record
         super(:for => @record)
-        @table = table
+        @table = template.content_tag(:dl, class: 'dl-horizontal')
         rows(*attrs)
       end
 
@@ -20,14 +20,14 @@ module ActiveAdmin
       def row(*args, &block)
         title   = args[0]
         options = args.extract_options!
-        options[:class] ||= :row
-        @table << tr(options) do
-          th do
+        @table << [
+          template.content_tag :dt do
             header_content_for(title)
-          end
-          td do
+          end,
+          template.content_tag :dd do
             content_for(block || title)
           end
+        ].join("\n").html_safe
         end
       end
 

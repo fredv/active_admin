@@ -8,7 +8,7 @@ module ActiveAdmin
         icon_name = attributes.delete(:icon)
         icn = icon_name ? icon(icon_name) : ""
         super(attributes)
-        add_class "panel well"
+        add_class "panel well span8"
         @title = h3(icn + title.to_s)
         @contents = div(:class => "panel_contents")
       end
