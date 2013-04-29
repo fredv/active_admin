@@ -28,7 +28,6 @@ module ActiveAdmin
             content_for(block || title)
           end
         ].join("\n").html_safe
-        end
       end
 
       protected
