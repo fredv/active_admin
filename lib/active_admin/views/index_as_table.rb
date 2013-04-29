@@ -123,9 +123,7 @@ module ActiveAdmin
       end
 
       def table_for(*args, &block)
-        content_tag :div, class: 'well' do
-          insert_tag IndexTableFor, *args, &block
-        end
+        insert_tag IndexTableFor, *args, &block
       end
 
       def default_table
