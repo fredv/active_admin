@@ -14,14 +14,10 @@ module ActiveAdmin
 
       def build_titlebar_left
         div class: 'row-fluid' do
-          ul id: "titlebar_left", class: 'breadcrumb span8' do
-            build_breadcrumb
-          end
-        end
-        div class: 'row-fluid' do
           div class: 'page-header span8' do
             build_action_items
             build_title_tag
+            build_breadcrumb
           end
         end
       end
@@ -36,10 +32,12 @@ module ActiveAdmin
           breadcrumb_links
         end
         return unless links.present? && links.is_a?(::Array)
-        li do
-          links.each do |link|
-            text_node link
-            span(separator, class: "divider")
+        ul id: "titlebar_left", class: 'breadcrumb' do
+          li do
+            links.each do |link|
+              text_node link
+              span(separator, class: "divider")
+            end
           end
         end
       end
