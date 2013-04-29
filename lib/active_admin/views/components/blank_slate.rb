@@ -5,11 +5,11 @@ module ActiveAdmin
       builder_method :blank_slate
 
       def default_class_name
-        'blank_slate_container'
+        'row-fluid blank_slate_container'
       end
 
       def build(content)
-        super(span(content.html_safe, :class => "blank_slate"))
+        super(div(span(content.html_safe, :class => "blank_slate"), class: 'span8' ))
       end
 
     end
