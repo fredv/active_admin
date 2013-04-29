@@ -9,7 +9,7 @@ module ActiveAdmin
       end
 
       def build(content)
-        super(div(span(content.html_safe, :class => "blank_slate"), class: 'span8' ))
+        super(div(span(content.html_safe, :class => "blank_slate"), class: 'span12' ))
       end
 
     end
