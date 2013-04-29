@@ -61,7 +61,7 @@ module ActiveAdmin
       protected
 
       def build_pagination_with_formats(options)
-        div :id => "index_footer" do
+        div class: 'pagination pagination-centered' do
           build_pagination
           div(page_entries_info(options).html_safe, :class => "pagination_information")
 
