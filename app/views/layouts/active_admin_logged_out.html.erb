@@ -18,7 +18,7 @@
 <div id="container-fluid">
 
   <div id="row-fluid">
-    <div class="span5 offset4">
+    <div class="span5 offset4 well">
       <% if active_admin_flash_messages.any? %>
         <% active_admin_flash_messages.each do |type, message| %>
           <%= content_tag :div, message, :class => "flash flash_#{type}" %>
