@@ -14,10 +14,12 @@ module ActiveAdmin
 
       def build_titlebar_left
         div class: 'row-fluid' do
-          ul id: "titlebar_left", class: 'breadcrumb' do
+          ul id: "titlebar_left", class: 'breadcrumb span8' do
             build_breadcrumb
           end
-          div class: 'page-header' do
+        end
+        div class: 'row-fluid' do
+          div class: 'page-header span8' do
             build_title_tag
           end
         end

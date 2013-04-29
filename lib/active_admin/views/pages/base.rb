@@ -37,7 +37,8 @@ module ActiveAdmin
         def build_page
           within @body do
             build_header
-            div id: "container-fluid" do
+            div class: "container-fluid" do
+              build_flash_messages
               build_title_bar
               build_page_content
               build_footer
@@ -55,7 +56,6 @@ module ActiveAdmin
 
 
         def build_page_content
-          build_flash_messages
           div class: 'row-fluid' do
             #class: (skip_sidebar? ? "without_sidebar" : "with_sidebar") do
             #
