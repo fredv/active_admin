@@ -14,7 +14,7 @@ module ActiveAdmin
 
 
       def default_class_name
-        "scopes table_tools_segmented_control nav nav-pills"
+        "scopes table_tools_segmented_control nav nav-pills pull-left"
       end
 
       def tag_name
