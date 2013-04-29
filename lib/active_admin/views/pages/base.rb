@@ -28,7 +28,7 @@ module ActiveAdmin
             end
 
             active_admin_application.javascripts.each do |path|
-              script :src => javascript_path(path), :type => "text/javascript"
+              script src: javascript_path(path), type: "text/javascript"
             end
             text_node csrf_meta_tag
           end
@@ -36,8 +36,8 @@ module ActiveAdmin
 
         def build_page
           within @body do
-            div :id => "wrapper" do
-              build_header
+            build_header
+            div id: "container-fluid" do
               build_title_bar
               build_page_content
               build_footer
@@ -56,32 +56,40 @@ module ActiveAdmin
 
         def build_page_content
           build_flash_messages
-          div :id => "active_admin_content", :class => (skip_sidebar? ? "without_sidebar" : "with_sidebar") do
-            build_main_content_wrapper
-            build_sidebar unless skip_sidebar?
+          div class: 'row-fluid' do
+            #class: (skip_sidebar? ? "without_sidebar" : "with_sidebar") do
+            #
+            div class: ( skip_sidebar? ) ? 'span12' : 'span8' do
+              build_main_content_wrapper
+            end
+            
+            unless skip_sidebar?
+              build_sidebar 
+            end
           end
         end
 
         def build_flash_messages
           if active_admin_flash_messages.any?
-            div :class => 'flashes' do
+            div class: 'alerts' do
               active_admin_flash_messages.each do |type, message|
-                div message, :class => "flash flash_#{type}"
+                div class: "alert alert-#{type}" do
+                  button type: 'button', class: 'close', "data-dismiss" => "alert" do
+                    text_node raw("&times;")
+                  end
+                  text_node message
+                end
               end
             end
           end
         end
 
         def build_main_content_wrapper
-          div :id => "main_content_wrapper" do
-            div :id => "main_content" do
-              main_content
-            end
-          end
+          main_content
         end
 
         def main_content
-          I18n.t('active_admin.main_content', :model => self.class.name).html_safe
+          I18n.t('active_admin.main_content', model: self.class.name).html_safe
         end
 
         def title
@@ -112,7 +120,7 @@ module ActiveAdmin
 
         # Renders the sidebar
         def build_sidebar
-          div :id => "sidebar" do
+          div id: "sidebar", class: 'span4' do
             sidebar_sections_for_action.collect do |section|
               sidebar_section(section)
             end

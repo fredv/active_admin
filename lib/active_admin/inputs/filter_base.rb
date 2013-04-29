@@ -4,10 +4,9 @@ module ActiveAdmin
       include ::Formtastic::Inputs::Base
 
       def input_wrapping(&block)
-        template.content_tag(:div,
-          template.capture(&block),
-          wrapper_html_options
-        )
+        template.content_tag(:div, { class: 'control-group' }) do
+          template.capture(&block)
+        end
       end
 
       def required?

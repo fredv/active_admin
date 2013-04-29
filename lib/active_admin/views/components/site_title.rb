@@ -4,11 +4,11 @@ module ActiveAdmin
     class SiteTitle < Component
 
       def tag_name
-        'h1'
+        'div'
       end
 
       def build(namespace)
-        super(:id => "site_title")
+        super(id: "site_title", class: 'brand')
         @namespace = namespace
 
         if site_title_link?
@@ -46,7 +46,7 @@ module ActiveAdmin
 
       def title_image
         path = helpers.render_or_call_method_or_proc_on(self, @namespace.site_title_image)
-        helpers.image_tag(path, :id => "site_title_image", :alt => @namespace.site_title)
+        helpers.image_tag(path, id: "site_title_image", alt: @namespace.site_title)
       end
 
     end

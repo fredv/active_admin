@@ -13,8 +13,8 @@ module ActiveAdmin
         options[:id] ||= "collection_selection"
 
         # Open a form
-        text_node form_tag(active_admin_config.batch_action_path(params), :id => options[:id])
-        input(:name => :batch_action, :id => :batch_action, :type => :hidden)
+        text_node form_tag(active_admin_config.batch_action_path(params), id: options[:id], class: 'pull-left span12')
+        input(name: :batch_action, id: :batch_action, type: :hidden)
 
         super(options)
       end

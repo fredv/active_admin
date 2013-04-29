@@ -40,22 +40,31 @@ module ActiveAdmin
       end
 
       def build_menu_item(item)
-        li :id => item.id do |li|
-          li.add_class "current" if item.current? assigns[:current_tab]
+        if children = item.items(self).presence
 
-          text_node link_to item.label(self), item.url(self), item.html_options
-
-          if children = item.items(self).presence
-            li.add_class "has_nested"
-            ul do
+          li id: item.id, class: 'dropdown' do |li|
+            a class: "dropdown-toggle", "data-toggle" => 'dropdown' do
+              text_node item.label(self)
+              span class: 'caret'
+            end
+            ul class: 'dropdown-menu' do
               children.each{ |child| build_menu_item child }
             end
           end
+
+        else
+
+          li id: item.id do |li|
+            li.add_class "active" if item.current? assigns[:current_tab]
+
+            text_node link_to item.label(self), item.url(self), item.html_options
+          end
+
         end
       end
 
       def default_options
-        { :id => "tabs" }
+        { class: 'nav' }
       end
     end
   end

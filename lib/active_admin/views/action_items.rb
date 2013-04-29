@@ -4,9 +4,11 @@ module ActiveAdmin
     class ActionItems < ActiveAdmin::Component
 
       def build(action_items)
-        action_items.each do |action_item|
-          span :class => "action_item" do
-            instance_eval(&action_item.block)
+        div :class => "btn-group pull-left" do
+          action_items.each do |action_item|
+            div class: 'btn' do
+              instance_eval(&action_item.block)
+            end
           end
         end
       end

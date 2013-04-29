@@ -13,7 +13,7 @@ module ActiveAdmin
         @collection = collection
         @columns = []
         build_table
-        super(options)
+        super(options.merge(class: "table table-hover"))
       end
 
       def column(*args, &block)
@@ -79,7 +79,7 @@ module ActiveAdmin
       def build_table_body
         @tbody = tbody do
           # Build enough rows for our collection
-          @collection.each{|elem| tr(:class => cycle('odd', 'even'), :id => dom_id(elem)) }
+          @collection.each{|elem| tr(:id => dom_id(elem)) }
         end
       end
 

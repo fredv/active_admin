@@ -130,7 +130,7 @@ module ActiveAdmin
 
         styles = []
 
-        styles << "width: #{column_with_span_width}%;"
+        styles << "width: #{column_with_span_width}%;overflow: hidden;"
 
         if max_width
           styles << "max-width: #{max_width};"

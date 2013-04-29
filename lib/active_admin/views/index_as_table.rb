@@ -73,7 +73,7 @@ module ActiveAdmin
     # Otherwise, any attribute that the resource collection responds to can be used.
     #
     #     index do
-    #       column "Title", :sortable => :title do |post|
+    #       column "Title", sortable: :title do |post|
     #         link_to post.title, admin_post_path(post)
     #       end
     #     end
@@ -82,13 +82,13 @@ module ActiveAdmin
     # and the attribute separated by a dot:
     #
     #     index do
-    #       column :title, :sortable => 'categories.name'
+    #       column :title, sortable: 'categories.name'
     #     end
     #
     # You can turn off sorting on any column by passing false:
     #
     #     index do
-    #       column :title, :sortable => false
+    #       column :title, sortable: false
     #     end
     #
     # == Showing and Hiding Columns
@@ -99,7 +99,7 @@ module ActiveAdmin
     # For example, if you were using CanCan:
     #
     #     index do
-    #       column :title, :sortable => false
+    #       column :title, sortable: false
     #       if can? :manage, Post
     #         column :some_secret_data
     #       end
@@ -109,11 +109,11 @@ module ActiveAdmin
 
       def build(page_presenter, collection)
         table_options = {
-          :id => "index_table_#{active_admin_config.resource_name.plural}",
-          :sortable => true,
-          :class => "index_table index",
+          id: "index_table_#{active_admin_config.resource_name.plural}",
+          sortable: true,
+          class: "index_table index",
           :i18n => active_admin_config.resource_class,
-          :paginator => page_presenter[:paginator] != false
+          paginator: page_presenter[:paginator] != false
         }
 
         table_for collection, table_options do |t|
@@ -149,13 +149,13 @@ module ActiveAdmin
         # Display a column for checkbox
         def selectable_column
           return unless active_admin_config.batch_actions.any?
-          column( resource_selection_toggle_cell, { :class => "selectable" } ) { |resource| resource_selection_cell( resource ) }
+          column( resource_selection_toggle_cell, { class: "selectable" } ) { |resource| resource_selection_cell( resource ) }
         end
 
         # Display a column for the id
         def id_column
-          column(resource_class.human_attribute_name(resource_class.primary_key), :sortable => resource_class.primary_key) do |resource|
-            link_to resource.id, resource_path(resource), :class => "resource_id_link"
+          column(resource_class.human_attribute_name(resource_class.primary_key), sortable: resource_class.primary_key) do |resource|
+            link_to resource.id, resource_path(resource), class: "resource_id_link"
           end
         end
 
@@ -170,16 +170,16 @@ module ActiveAdmin
         #   end
         #
         #   # Custom actions without the defaults.
-        #   actions :defaults => false do |admin_user|
+        #   actions defaults: false do |admin_user|
         #     link_to 'Grant Admin', grant_admin_admin_user_path(admin_user)
         #   end
         def actions(options = {}, &block)
           options = {
-            :name => "",
-            :defaults => true
+            name: "",
+            defaults: true
           }.merge(options)
           column options[:name] do |resource|
-            text_node default_actions(resource) if options[:defaults]
+            default_actions(resource) if options[:defaults]
             text_node instance_exec(resource, &block) if block_given?
           end
         end
@@ -188,22 +188,34 @@ module ActiveAdmin
           links = proc do |resource|
             links = ''.html_safe
             if controller.action_methods.include?('show') && authorized?(ActiveAdmin::Auth::READ, resource)
-              links << link_to(I18n.t('active_admin.view'), resource_path(resource), :class => "member_link view_link")
+              links << a(href: resource_path(resource), class: "member_link view_link btn") do
+                i class: 'icon icon-list'
+                text_node I18n.t('active_admin.view')
+              end
             end
             if controller.action_methods.include?('edit') && authorized?(ActiveAdmin::Auth::UPDATE, resource)
-              links << link_to(I18n.t('active_admin.edit'), edit_resource_path(resource), :class => "member_link edit_link")
+              links << a(href: edit_resource_path(resource), class: "member_link edit_link btn") do
+                i class: 'icon icon-edit'
+                text_node I18n.t('active_admin.edit')
+              end
             end
             if controller.action_methods.include?('destroy') && authorized?(ActiveAdmin::Auth::DESTROY, resource)
-              links << link_to(I18n.t('active_admin.delete'), resource_path(resource), :method => :delete, :data => {:confirm => I18n.t('active_admin.delete_confirmation')}, :class => "member_link delete_link")
+              links << a(href: resource_path(resource), method: :delete, :"data-confirm" => I18n.t('active_admin.delete_confirmation'), class: "member_link delete_link btn btn-danger") do
+                i class: 'icon icon-trash'
+                text_node I18n.t('active_admin.delete')
+              end
             end
             links
           end
 
           options = args.extract_options!
-          if options.present? || args.empty?
-            actions options
-          else
-            links.call(args.first)
+
+          div class: 'btn-group pull-right' do
+            if options.present? || args.empty?
+              actions options
+            else
+              links.call(args.first)
+            end
           end
         end
 
