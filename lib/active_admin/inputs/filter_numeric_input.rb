@@ -7,8 +7,10 @@ module ActiveAdmin
         input_wrapping do
           [ label_html,
             template.content_tag(:div, class: 'controls') do
-              select_html
-              input_html
+              [
+                select_html,
+                input_html
+              ].join("\n").html_safe
             end
           ].join("\n").html_safe
         end
