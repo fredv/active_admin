@@ -1,3 +1,1 @@
-div class: 'span8' do
-  insert_tag renderer_for(:edit)
-end
+insert_tag renderer_for(:edit)

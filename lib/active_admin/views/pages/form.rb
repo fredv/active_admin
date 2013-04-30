@@ -19,8 +19,10 @@ module ActiveAdmin
           if form_options[:partial]
             render(form_options[:partial])
           else
-            active_admin_form_for(resource, form_options) do |f|
-              instance_exec f, &form_presenter.block
+            div class: 'span8' do
+              active_admin_form_for(resource, form_options) do |f|
+                instance_exec f, &form_presenter.block
+              end
             end
           end
         end
