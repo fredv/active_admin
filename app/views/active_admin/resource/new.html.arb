@@ -1,1 +1,3 @@
-insert_tag renderer_for(:new)
+div class: 'span8' do
+  insert_tag renderer_for(:new)
+end

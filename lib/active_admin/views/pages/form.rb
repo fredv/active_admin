@@ -10,7 +10,7 @@ module ActiveAdmin
         end
 
         def form_presenter
-            active_admin_config.get_page_presenter(:form) || default_form_config
+          active_admin_config.get_page_presenter(:form) || default_form_config
         end
 
         def main_content
