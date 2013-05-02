@@ -64,9 +64,8 @@ module ActiveAdmin
       def build_pagination_with_formats(options)
         div class: 'pagination pull-right' do
           build_pagination
+          div(page_entries_info(options).html_safe, :class => "pagination_information")
         end
-
-        div(page_entries_info(options).html_safe, :class => "pagination_information")
 
         if @download_links.is_a?(Array) && !@download_links.empty?
           build_download_format_links @download_links
