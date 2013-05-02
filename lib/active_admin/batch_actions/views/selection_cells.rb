@@ -10,7 +10,7 @@ module ActiveAdmin
       def build
         label id: "collection_selection_toggle_explaination" do
           input( :type => "checkbox", :id => "collection_selection_toggle_all", :name => "collection_selection_toggle_all", :class => "toggle_all" )
-          I18n.t('active_admin.batch_actions.selection_toggle_explanation', :default => "Select all")
+          text_node I18n.t('active_admin.batch_actions.selection_toggle_explanation', :default => "Select all")
         end
       end
     end
