@@ -2,7 +2,7 @@ module ActiveAdmin
   module Inputs
     class FilterCheckBoxesInput < ::Formtastic::Inputs::CheckBoxesInput
       include FilterBase
-
+ 
       def input_name
         "#{object_name}[#{association_primary_key || method}_in][]"
       end
@@ -18,7 +18,7 @@ module ActiveAdmin
 
       # Don't wrap in UL tag
       def choices_group_wrapping(&block)
-        template.capture(&block)
+        template.content_tag :div, template.capture(&block), class: 'controls'
       end
 
       # Don't wrap in LI tag
