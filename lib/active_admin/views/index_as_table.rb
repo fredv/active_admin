@@ -189,7 +189,7 @@ module ActiveAdmin
             links = ''.html_safe
             if controller.action_methods.include?('show') && authorized?(ActiveAdmin::Auth::READ, resource)
               links << a(href: resource_path(resource), class: "member_link view_link btn") do
-                i class: 'icon icon-list'
+                i class: 'icon icon-info-sign'
                 text_node I18n.t('active_admin.view')
               end
             end
