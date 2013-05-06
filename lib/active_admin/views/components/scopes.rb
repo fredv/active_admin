@@ -14,7 +14,7 @@ module ActiveAdmin
 
 
       def default_class_name
-        "scopes table_tools_segmented_control nav nav-pills pull-left"
+        "scopes table_tools_segmented_control nav nav-pills pull-right"
       end
 
       def tag_name
@@ -22,8 +22,14 @@ module ActiveAdmin
       end
 
       def build(scopes, options = {})
-        scopes.each do |scope|
-          build_scope(scope, options) if call_method_or_proc_on(self, scope.display_if_block)
+        li class: 'dropdown' do
+          a href: '#', class: 'dropdown-toggle', data: { toggle: 'dropdown' } do
+            text_node "Scopes"
+          ul class: 'dropdown-menu' do
+            scopes.each do |scope|
+              build_scope(scope, options) if call_method_or_proc_on(self, scope.display_if_block)
+            end
+          end
         end
       end
 
