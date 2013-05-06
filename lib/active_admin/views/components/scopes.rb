@@ -23,7 +23,7 @@ module ActiveAdmin
 
       def build(scopes, options = {})
         li class: 'dropdown' do
-          a href: '#', class: 'dropdown-toggle', data: { toggle: 'dropdown' } do
+          a href: '#', class: 'dropdown-toggle', "data-toggle" => 'dropdown' do
             text_node "Scopes"
           end
           ul class: 'dropdown-menu' do
