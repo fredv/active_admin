@@ -11,12 +11,12 @@ module ActiveAdmin
         super(:for => @record)
         @table = dl(class: 'dl-horizontal') do
           attrs.each do |attr|
-            title = attr.first
+            title = [attr].flatten.first
             dt do
               header_content_for(title)
             end
             dd do
-              content_for(block || title)
+              content_for(title)
             end
           end
         end
