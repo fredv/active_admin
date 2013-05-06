@@ -9,19 +9,27 @@ module ActiveAdmin
       def build(record, *attrs)
         @record = record
         super(:for => @record)
-        @table = table
-        rows(*attrs)
+        @table = dl(class: 'dl-horizontal') do
+          attrs.each do |attr|
+            title = attr.first
+            dt do
+              header_content_for(title)
+            end
+            dd do
+              content_for(block || title)
+            end
+          end
+        end
       end
 
       def rows(*attrs)
-        attrs.each {|attr| row(attr) }
       end
 
       def row(*args, &block)
         title   = args[0]
         options = args.extract_options!
         options[:class] ||= :row
-        @table << tr(options) do
+        @table << dl(options) do
           th do
             header_content_for(title)
           end
