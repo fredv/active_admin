@@ -63,14 +63,14 @@ module ActiveAdmin
         add_action_item :only => :show do
           if controller.action_methods.include?('edit') && authorized?(ActiveAdmin::Auth::UPDATE, resource)
             link_to(raw("<i class='icon icon-edit'></i> #{I18n.t('active_admin.edit_model', :model => active_admin_config.resource_label)}"),
-              edit_resource_path(resource), class: 'btn btn-success')
+              edit_resource_path(resource), class: 'btn')
           end
         end
 
         # Destroy link on show
         add_action_item :only => :show do
           if controller.action_methods.include?("destroy") && authorized?(ActiveAdmin::Auth::DESTROY, resource)
-            link_to(raw("<i class='icon icon-details'></i> #{I18n.t('active_admin.delete_model', :model => active_admin_config.resource_label)}"),
+            link_to(raw("<i class='icon icon-trash'></i> #{I18n.t('active_admin.delete_model', :model => active_admin_config.resource_label)}"),
               resource_path(resource),
               :method => :delete, :data => {:confirm => I18n.t('active_admin.delete_confirmation')}, class: 'btn btn-danger')
           end
