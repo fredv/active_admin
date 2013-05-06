@@ -61,6 +61,8 @@ module ActiveAdmin
       protected
 
       def build_pagination_with_formats(options)
+        div class: 'row-fluid' do
+        div class: 'span12' do
         div class: 'pagination pull-right' do
           build_pagination
           div(page_entries_info(options).html_safe, :class => "pagination_information")
@@ -70,6 +72,8 @@ module ActiveAdmin
           else
             build_download_format_links unless @download_links == false
           end
+        end
+        end
         end
 
       end
