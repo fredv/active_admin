@@ -60,6 +60,7 @@ module ActiveAdmin
 
         def build_table_tools
           div :class => "table_tools" do
+            resource_selection_toggle_panel if active_admin_config.batch_actions.any?
             build_batch_actions_selector
             build_scopes
             build_index_list

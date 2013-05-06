@@ -29,7 +29,7 @@ module ActiveAdmin
       builder_method :resource_selection_toggle_panel
 
       def build
-        super(:id => "collection_selection_toggle_panel", class: 'span12')
+        super(:id => "collection_selection_toggle_panel", class: 'pull-left span1')
         resource_selection_toggle_cell
       end
 

@@ -22,9 +22,10 @@ module ActiveAdmin
       end
 
       def build(scopes, options = {})
-        li class: 'dropdown' do
+        li class: "dropdown #{'active' if params[:scope].present?}".strip do
           a href: '#', class: 'dropdown-toggle', "data-toggle" => 'dropdown' do
-            text_node "Scopes"
+            text_node (params[:scope].presence || "Scopes")
+            span class: 'caret'
           end
           ul class: 'dropdown-menu' do
             scopes.each do |scope|
