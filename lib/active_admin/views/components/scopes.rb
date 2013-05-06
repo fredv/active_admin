@@ -25,6 +25,7 @@ module ActiveAdmin
         li class: 'dropdown' do
           a href: '#', class: 'dropdown-toggle', data: { toggle: 'dropdown' } do
             text_node "Scopes"
+          end
           ul class: 'dropdown-menu' do
             scopes.each do |scope|
               build_scope(scope, options) if call_method_or_proc_on(self, scope.display_if_block)
