@@ -25,7 +25,7 @@ ActiveAdmin.after_load do |app|
       namespace.register ActiveAdmin::Comment, :as => namespace.comments_registration_name do
         actions :index, :show, :create
 
-        menu parent: 'Admin' unless namespace.show_comments_in_menu
+        menu parent: 'Admin' if namespace.show_comments_in_menu
 
         config.comments      = false # Don't allow comments on comments
         config.batch_actions = false # The default destroy batch action isn't showing up anyway...
