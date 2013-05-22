@@ -189,20 +189,17 @@ module ActiveAdmin
             links = ''.html_safe
             if controller.action_methods.include?('show') && authorized?(ActiveAdmin::Auth::READ, resource)
               links << a(href: resource_path(resource), class: "member_link view_link btn") do
-                i class: 'icon icon-info-sign'
-                text_node I18n.t('active_admin.view')
+                i class: 'icon icon-ellipsis-horizontal', alt: I18n.t('active_admin.view')
               end
             end
             if controller.action_methods.include?('edit') && authorized?(ActiveAdmin::Auth::UPDATE, resource)
               links << a(href: edit_resource_path(resource), class: "member_link edit_link btn") do
-                i class: 'icon icon-edit'
-                text_node I18n.t('active_admin.edit')
+                i class: 'icon icon-edit', alt: I18n.t('active_admin.edit')
               end
             end
             if controller.action_methods.include?('destroy') && authorized?(ActiveAdmin::Auth::DESTROY, resource)
               links << a(href: resource_path(resource), method: :delete, :"data-confirm" => I18n.t('active_admin.delete_confirmation'), class: "member_link delete_link btn btn-danger") do
-                i class: 'icon icon-trash'
-                text_node I18n.t('active_admin.delete')
+                i class: 'icon icon-trash', alt: I18n.t('active_admin.delete')
               end
             end
             links
