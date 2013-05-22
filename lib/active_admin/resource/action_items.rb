@@ -55,14 +55,14 @@ module ActiveAdmin
         add_action_item :except => [:new, :show] do
           if controller.action_methods.include?('new') && authorized?(ActiveAdmin::Auth::CREATE, active_admin_config.resource_class)
             link_to(raw("<i class='icon icon-plus-sign'></i> #{I18n.t('active_admin.new_model', :model => active_admin_config.resource_label)}"),
-              new_resource_path, class: 'btn btn-success')
+              new_resource_path, class: 'btn')
           end
         end
 
         # Edit link on show
         add_action_item :only => :show do
           if controller.action_methods.include?('edit') && authorized?(ActiveAdmin::Auth::UPDATE, resource)
-            link_to(raw("<i class='icon icon-edit'></i> #{I18n.t('active_admin.edit_model', :model => active_admin_config.resource_label)}"),
+            link_to(raw("<i class='icon icon-edit' alt='#{I18n.t('active_admin.edit_model', :model => active_admin_config.resource_label)}'></i>"),
               edit_resource_path(resource), class: 'btn')
           end
         end
@@ -70,7 +70,7 @@ module ActiveAdmin
         # Destroy link on show
         add_action_item :only => :show do
           if controller.action_methods.include?("destroy") && authorized?(ActiveAdmin::Auth::DESTROY, resource)
-            link_to(raw("<i class='icon icon-trash'></i> #{I18n.t('active_admin.delete_model', :model => active_admin_config.resource_label)}"),
+            link_to(raw("<i class='icon icon-trash' alt='#{I18n.t('active_admin.delete_model', :model => active_admin_config.resource_label)}'></i> "),
               resource_path(resource),
               :method => :delete, :data => {:confirm => I18n.t('active_admin.delete_confirmation')}, class: 'btn btn-danger')
           end
