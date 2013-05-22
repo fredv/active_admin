@@ -28,6 +28,11 @@ module ActiveAdmin
             span class: 'caret'
           end
           ul class: 'dropdown-menu' do
+            li do
+              a :href => url_for(params.except(:scope, 'scope').merge(:page => 1)), :class => "table_tools_button" do
+                text_node "Default"
+              end
+            end
             scopes.each do |scope|
               build_scope(scope, options) if call_method_or_proc_on(self, scope.display_if_block)
             end
