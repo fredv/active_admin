@@ -189,7 +189,7 @@ module ActiveAdmin
             links = ''.html_safe
             if controller.action_methods.include?('show') && authorized?(ActiveAdmin::Auth::READ, resource)
               links << a(href: resource_path(resource), class: "member_link view_link btn") do
-                i class: 'icon icon-ellipsis-horizontal', alt: I18n.t('active_admin.view')
+                i class: 'icon icon-file-alt', alt: I18n.t('active_admin.view')
               end
             end
             if controller.action_methods.include?('edit') && authorized?(ActiveAdmin::Auth::UPDATE, resource)
