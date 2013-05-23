@@ -13,7 +13,7 @@ module ActiveAdmin
         @collection = collection
         @columns = []
         build_table
-        super(options.merge(class: "table table-hover"))
+        super(options.merge(class: "table table-hover span12"))
       end
 
       def column(*args, &block)
