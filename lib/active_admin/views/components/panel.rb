@@ -10,7 +10,7 @@ module ActiveAdmin
         super(attributes)
         add_class "panel well"
         @title = h3(icn + title.to_s)
-        @contents = div(:class => "panel_contents")
+        @contents = div(:class => "panel_contents row-fluid")
       end
 
       def add_child(child)
