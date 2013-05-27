@@ -13,7 +13,7 @@ module ActiveAdmin
         @collection = collection
         @columns = []
         build_table
-        super(options.merge(class: "table table-hover span12"))
+        super(options.merge(class: "table span12"))
       end
 
       def column(*args, &block)
@@ -65,7 +65,6 @@ module ActiveAdmin
 
         classes << 'sortable'                         if sort_key
         classes << "sorted-#{current_sort[1]}"        if sort_key && current_sort[0] == sort_key
-        classes << col.html_class
 
         sort_css = if sort_key && current_sort[0] == sort_key
           if current_sort[1] == 'desc'

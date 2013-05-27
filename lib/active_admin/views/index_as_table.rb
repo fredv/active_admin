@@ -123,7 +123,9 @@ module ActiveAdmin
       end
 
       def table_for(*args, &block)
-        insert_tag IndexTableFor, *args, &block
+        insert_tag :div, class: 'row-fluid' do
+          insert_tag IndexTableFor, *args, &block
+        end
       end
 
       def default_table
