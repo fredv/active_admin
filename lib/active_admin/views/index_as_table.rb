@@ -116,11 +116,9 @@ module ActiveAdmin
           paginator: page_presenter[:paginator] != false
         }
 
-        div class: 'row-fluid' do
-          table_for collection, table_options do |t|
-            table_config_block = page_presenter.block || default_table
-            instance_exec(t, &table_config_block)
-          end
+        table_for collection, table_options do |t|
+          table_config_block = page_presenter.block || default_table
+          instance_exec(t, &table_config_block)
         end
       end
 
