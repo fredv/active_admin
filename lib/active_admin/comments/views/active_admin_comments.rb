@@ -36,7 +36,7 @@ module ActiveAdmin
         end
 
         def build_comment(comment)
-          div :for => comment do
+          div :for => comment, class: 'comment-msg' do
             div :class => "active_admin_comment_meta" do
               user_name = comment.author ? auto_link(comment.author) : "Anonymous"
               h4(user_name, :class => "active_admin_comment_author")
@@ -50,7 +50,7 @@ module ActiveAdmin
         end
 
         def build_empty_message
-          span :class => "empty" do
+          span :class => "empty", class: 'comment-msg' do
             I18n.t('active_admin.comments.no_comments_yet')
           end
         end
