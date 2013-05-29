@@ -71,7 +71,7 @@ module ActiveAdmin
 
         def build_flash_messages
           if active_admin_flash_messages.any?
-            div class: 'alerts' do
+            div class: 'alerts span8' do
               active_admin_flash_messages.each do |type, message|
                 div class: "alert alert-#{type}" do
                   button type: 'button', class: 'close', "data-dismiss" => "alert" do
