@@ -68,7 +68,7 @@ module ActiveAdmin
         options[:url] ||= collection_path
         options[:html] ||= {}
         options[:html][:method] = :get
-        options[:html][:class] ||= "filter_form"
+        options[:html][:class] = "filter_form"
         options[:as] = :q
         clear_link = link_to(I18n.t('active_admin.clear_filters'), "#", :class => "btn btn-mini clear_filters_btn")
         form_for search, options do |f|
